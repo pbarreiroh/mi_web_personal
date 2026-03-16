@@ -8,6 +8,7 @@ import ScrollReveal from './components/ScrollReveal';
 // Componente para el Hero con canvas de partículas
 const ParticleCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mouseRef = useRef({ x: -1000, y: -1000 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -25,39 +26,69 @@ const ParticleCanvas = () => {
       init();
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY };
+    };
+
     class Particle {
       x: number;
       y: number;
       vx: number;
       vy: number;
+      baseVx: number;
+      baseVy: number;
+      radius: number;
+      opacity: number;
 
       constructor() {
         this.x = Math.random() * (canvas?.width || 0);
         this.y = Math.random() * (canvas?.height || 0);
-        this.vx = (Math.random() - 0.5) * 0.3; // lento
-        this.vy = (Math.random() - 0.5) * 0.3; // lento
+        this.vx = 0;
+        this.vy = 0;
+        this.baseVx = (Math.random() - 0.5) * 0.2;
+        this.baseVy = (Math.random() - 0.5) * 0.2;
+        this.radius = 1 + Math.random() * 0.5; // 1 a 1.5px
+        this.opacity = 0.2 + Math.random() * 0.5; // 0.2 a 0.7
       }
 
       update() {
         if (!canvas) return;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-        this.x += this.vx;
-        this.y += this.vy;
+
+        const dx = mouseRef.current.x - this.x;
+        const dy = mouseRef.current.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 120 && dist > 0) {
+          const force = (120 - dist) / 120 * 0.8;
+          this.vx += (dx / dist) * force * -1;
+          this.vy += (dy / dist) * force * -1;
+        }
+
+        this.vx *= 0.95;
+        this.vy *= 0.95;
+
+        this.x += this.vx + this.baseVx;
+        this.y += this.vy + this.baseVy;
+
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
       }
 
       draw() {
         if (!ctx) return;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, 1, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
         ctx.fill();
       }
     }
 
     const init = () => {
       particles = [];
-      for (let i = 0; i < 55; i++) {
+      const numParticles = Math.min(80, Math.floor((window.innerWidth * window.innerHeight) / 12000));
+      for (let i = 0; i < Math.max(40, numParticles); i++) {
         particles.push(new Particle());
       }
     };
@@ -79,8 +110,8 @@ const ParticleCanvas = () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            // Opacidad tenue dependiente de la distancia
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.12 - dist / 80 * 0.12})`;
+            // Opacidad muy baja constante
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
             ctx.stroke();
           }
         }
@@ -90,11 +121,13 @@ const ParticleCanvas = () => {
     };
 
     window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', handleMouseMove);
     resize();
     animate();
 
     return () => {
       window.removeEventListener('resize', resize);
+      window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
