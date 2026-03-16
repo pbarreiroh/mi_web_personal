@@ -66,40 +66,40 @@ export default function Guestbook() {
         <div>
           <input
             type="text"
-            placeholder="Nombre (opcional)"
+            placeholder="Tu nombre (opcional)"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-300 placeholder-gray-400 text-sm"
+            className="w-full px-4 py-3 bg-[#111] border border-white/10 rounded-md focus:outline-none focus:border-white/30 placeholder:text-white/20 text-white text-sm transition-colors hoverable shadow-inner"
           />
         </div>
         <div>
           <textarea
-            placeholder="Escribe un mensaje..."
+            placeholder="Escribe un mensaje en el guestbook..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
             rows={3}
-            className="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-300 placeholder-gray-400 text-sm resize-none"
+            className="w-full px-4 py-3 bg-[#111] border border-white/10 rounded-md focus:outline-none focus:border-white/30 placeholder:text-white/20 text-white text-sm resize-none transition-colors hoverable shadow-inner"
           />
         </div>
         <button
           type="submit"
           disabled={loading || !message.trim()}
-          className="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-md hover:bg-gray-800 disabled:opacity-50 transition-colors"
+          className="px-6 py-2 border border-white/20 text-white/60 text-sm font-medium rounded-md hover:text-white hover:border-white/50 disabled:opacity-30 transition-all hoverable bg-transparent"
         >
-          {loading ? 'Enviando...' : 'Firmar'}
+          {loading ? 'Enviando...' : 'Firmar el libro'}
         </button>
       </form>
 
-      <div className="space-y-6">
+      <div className="space-y-4 pt-4">
         {messages.map((msg) => (
-          <div key={msg.id} className="text-sm">
-            <div className="text-gray-900 font-medium mb-1">{msg.name || 'Anónimo'}</div>
-            <div className="text-gray-600">{msg.message}</div>
+          <div key={msg.id} className="text-sm p-4 bg-[#111]/40 border border-white/5 rounded-md relative overflow-hidden">
+            <div className="text-white/80 font-medium mb-1 font-mono text-[11px] uppercase tracking-wider">{msg.name || 'Anónimo'}</div>
+            <div className="text-white/60 leading-relaxed text-sm">{msg.message}</div>
           </div>
         ))}
         {messages.length === 0 && (
-          <div className="text-sm text-gray-400">Aún no hay mensajes. ¡Sé el primero en firmar!</div>
+          <div className="text-sm text-white/30 italic">Aún no hay mensajes. ¡Sé el primero en firmar!</div>
         )}
       </div>
     </div>
