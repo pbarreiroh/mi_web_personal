@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Guestbook from './components/Guestbook';
 import VisitTracker from './components/VisitTracker';
 import ScrollReveal from './components/ScrollReveal';
@@ -159,8 +159,30 @@ export default function Home() {
     },
   ];
 
+  const phrases = ["builder.", "curioso.", "ciberseguridad.", "aprendiendo."];
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setPhraseIndex(prev => (prev + 1) % phrases.length);
+        setFade(true);
+      }, 400);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="relative font-sans text-[#e8e8e8]">
+      <style>{`
+        @keyframes scrollLine {
+          0% { top: -100%; height: 100%; }
+          50% { top: 0%; height: 100%; }
+          100% { top: 100%; height: 100%; }
+        }
+      `}</style>
       <VisitTracker />
 
       {/* Nav fija */}
@@ -176,21 +198,26 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="relative min-h-[100dvh] flex flex-col justify-center items-center pt-20">
+      <section className="relative min-h-screen w-full">
         <ParticleCanvas />
         
-        <div className="relative z-10 w-full max-w-3xl px-6 md:px-12 lg:px-20 space-y-12">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-8 md:px-16 lg:px-24">
           <ScrollReveal>
-            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight text-white mb-2">
+            <h1 className="font-serif text-5xl md:text-7xl lg:text-9xl tracking-tight text-white mb-2 leading-none">
               Pablo <span className="text-white/40 italic">Barreiro.</span>
             </h1>
-            <p className="text-white/[0.35] text-sm md:text-base leading-relaxed max-w-lg mt-6">
+            <div className="h-10 md:h-12 mt-4">
+              <p className={`text-2xl md:text-4xl text-white/40 font-serif italic transition-opacity duration-[400ms] ${fade ? 'opacity-100' : 'opacity-0'}`}>
+                {phrases[phraseIndex]}
+              </p>
+            </div>
+            <p className="text-white/[0.35] text-sm md:text-base leading-relaxed max-w-lg mt-8">
               Primer año de carrera. Fui a mi primera hackathon. Me obsesiona la ciberseguridad. Construyendo cosas en internet y aprendiendo cómo romperlas (de forma ética).
             </p>
           </ScrollReveal>
 
           <ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-12 max-w-3xl">
               <a href="mailto:pablo.barreiro.cores@gmail.com" className="hoverable p-4 border border-[rgba(255,255,255,0.07)] rounded-lg bg-white/[0.01] hover:bg-white/[0.03] transition-colors flex flex-col gap-2 relative overflow-hidden group">
                 <svg className="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -227,7 +254,7 @@ export default function Home() {
           </ScrollReveal>
 
           <ScrollReveal>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <a href="#proyectos" className="hoverable px-5 py-2.5 border border-[rgba(255,255,255,0.15)] text-white/80 text-xs tracking-wide text-center rounded-md hover:bg-white/5 transition-colors">
                 Ver proyectos
               </a>
@@ -237,14 +264,28 @@ export default function Home() {
             </div>
           </ScrollReveal>
         </div>
+
+        {/* Indicador de scroll */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+          <span className="font-mono text-[10px] tracking-widest text-white/30 uppercase">Scroll</span>
+          <div className="w-[1px] h-12 bg-white/10 overflow-hidden relative">
+            <div 
+              className="w-full bg-white/50 absolute left-0" 
+              style={{
+                animation: 'scrollLine 2s cubic-bezier(0.77, 0, 0.175, 1) infinite'
+              }}
+            />
+          </div>
+        </div>
       </section>
 
-      <main className="max-w-2xl md:max-w-3xl mx-auto px-6 py-20 space-y-32">
+      {/* Otras secciones */}
+      <main className="max-w-4xl mx-auto px-8 md:px-16 py-20 space-y-32">
         
-        {/* LinkedIn Post - Últimamente */}
+        {/* Últimamente */}
         <ScrollReveal>
           <section className="space-y-6">
-            <div className="font-mono uppercase text-[10px] tracking-widest text-white/30 mb-6">
+            <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/30 mb-6">
               Últimamente
             </div>
             <div className="p-6 border border-[rgba(255,255,255,0.08)] rounded-xl bg-gradient-to-b from-[#111] to-[#0a0a0a]">
@@ -277,7 +318,7 @@ export default function Home() {
         {/* Galería */}
         <ScrollReveal id="galeria">
           <section className="space-y-6">
-            <div className="font-mono uppercase text-[10px] tracking-widest text-white/30">
+            <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/30">
               Galería
             </div>
             <div className="grid grid-cols-3 gap-3">
@@ -292,14 +333,14 @@ export default function Home() {
         {/* Proyectos */}
         <ScrollReveal id="proyectos">
           <section className="space-y-6">
-            <div className="font-mono uppercase text-[10px] tracking-widest text-white/30">
+            <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/30">
               Proyectos
             </div>
             <div className="flex flex-col border-t border-white/5">
               {projects.map((project, idx) => (
                 <div key={idx} className="group flex flex-col sm:flex-row sm:items-center justify-between py-6 border-b border-white/5 hover:bg-white/[0.02] transition-colors hoverable px-2 -mx-2">
                   <div className="space-y-1 sm:w-2/3 group-hover:translate-x-2 transition-transform duration-300">
-                    <h3 className="text-white/70 text-sm font-medium">{project.name}</h3>
+                    <h3 className="text-white/70 text-base md:text-lg font-medium">{project.name}</h3>
                     <p className="text-white/25 text-xs tracking-wide">{project.description}</p>
                   </div>
                   <div className="flex flex-wrap gap-2 mt-3 sm:mt-0">
@@ -318,7 +359,7 @@ export default function Home() {
         {/* Guestbook */}
         <ScrollReveal id="contacto">
           <section className="space-y-6">
-            <div className="font-mono uppercase text-[10px] tracking-widest text-white/30">
+            <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/30">
               Guestbook
             </div>
             <Guestbook />
