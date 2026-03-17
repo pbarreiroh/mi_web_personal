@@ -106,12 +106,12 @@ const ParticleCanvas = () => {
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 80) {
+          if (dist < 100) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            // Opacidad muy baja constante
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+            // Opacidad más visible y dependiente de la distancia
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.15 - (dist / 100) * 0.15})`;
             ctx.stroke();
           }
         }
