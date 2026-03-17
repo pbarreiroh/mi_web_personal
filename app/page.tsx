@@ -264,11 +264,10 @@ export default function Home() {
             </div>
           </ScrollReveal>
         </div>
+      </section>
 
-
-
-        {/* Otras secciones */}
-        <main className="max-w-4xl mx-auto px-8 md:px-16 py-20 space-y-32">
+      {/* Otras secciones */}
+      <main className="max-w-4xl mx-auto px-8 md:px-16 py-20 space-y-32">
 
           {/* Últimamente */}
           <ScrollReveal>
@@ -367,12 +366,12 @@ export default function Home() {
               <Guestbook />
             </section>
           </ScrollReveal>
-        </main>
+      </main>
 
-        {/* Footer */}
-        <footer className="py-12 text-center text-white/15 text-xs font-mono">
-          pb.dev © {new Date().getFullYear()}
-        </footer>
+      {/* Footer */}
+      <footer className="py-12 text-center text-white/15 text-xs font-mono">
+        pb.dev © {new Date().getFullYear()}
+      </footer>
     </div>
   );
 }
