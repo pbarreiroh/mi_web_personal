@@ -135,7 +135,7 @@ const ParticleCanvas = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-90 z-0"
+      className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-90"
     />
   );
 };
@@ -184,28 +184,29 @@ export default function Home() {
         }
       `}</style>
       <VisitTracker />
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <ParticleCanvas />
+      </div>
 
       {/* Nav fija */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 bg-[rgba(8,8,8,0.85)] backdrop-blur border-b border-white/[0.04]">
-        <div className="font-mono text-[11px] tracking-widest text-white/80">
-          pb.dev
-        </div>
-        
-        <div className="absolute left-1/2 -translate-x-1/2 font-serif italic text-white/70 text-sm tracking-wide pointer-events-none select-none">
-          Bienvenido a mi web
-        </div>
-
-        <div className="flex gap-6 text-[10px] uppercase tracking-wider text-white/50">
-          <a href="#proyectos" className="hoverable hover:text-white transition-colors">Proyectos</a>
-          <a href="#galeria" className="hoverable hover:text-white transition-colors">Galería</a>
-          <a href="#herramientas" className="hoverable hover:text-white transition-colors">Herramientas</a>
-          <a href="#contacto" className="hoverable hover:text-white transition-colors">Contacto</a>
+        <div className="relative flex justify-between items-center w-full">
+          <div className="font-mono text-[11px] tracking-widest text-white/80">pb.dev</div>
+          <div className="absolute left-1/2 -translate-x-1/2 font-serif italic text-white/70 text-sm tracking-wide pointer-events-none select-none">
+            Bienvenido a mi web
+          </div>
+          <div className="flex gap-6 text-[10px] uppercase tracking-wider text-white/50">
+            <a href="#herramientas" className="hoverable hover:text-white transition-colors">Herramientas</a>
+            <a href="#proyectos" className="hoverable hover:text-white transition-colors">Proyectos</a>
+            <a href="#galeria" className="hoverable hover:text-white transition-colors">Galería</a>
+            <a href="#contacto" className="hoverable hover:text-white transition-colors">Contacto</a>
+          </div>
         </div>
       </nav>
 
       {/* Hero */}
       <section className="relative min-h-screen w-full overflow-hidden">
-        <ParticleCanvas />
+
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl px-8 md:px-16">
           <ScrollReveal>
@@ -218,7 +219,7 @@ export default function Home() {
               </p>
             </div>
             <p className="font-sans text-white/55 text-sm md:text-base leading-relaxed max-w-lg mt-8">
-              Me llamo Pablo, estudio Ingeniería Informática, hago esta web para darme a conocer un poco más y para subir proyectos que vaya creando a lo largo de la carrera.
+              Me llamo Pablo, estudio Ingeniería Informática, hago esta web para mostrar un poco más de mí y para subir proyectos que vaya creando a lo largo de la carrera.
               Además, en el apartado de Herramientas, te proporciono dos inteligencias artificiales desarrolladas por mi que pueden ayudarte en tu día a día.
             </p>
           </ScrollReveal>
@@ -261,12 +262,15 @@ export default function Home() {
           </ScrollReveal>
 
           <ScrollReveal>
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <div className="flex flex-col sm:flex-row gap-3 mt-8">
+              <a href="#herramientas" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
+                Explorar herramientas
+              </a>
               <a href="#proyectos" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
                 Ver proyectos
               </a>
-              <a href="#contacto" className="font-sans hoverable px-5 py-2.5 border border-transparent text-white/50 text-xs tracking-wide text-center rounded-md hover:text-white hover:bg-white/5 transition-colors">
-                Conectar
+              <a href="#contacto" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
+                Contáctame
               </a>
             </div>
           </ScrollReveal>
@@ -282,7 +286,7 @@ export default function Home() {
             <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45 mb-6">
               Últimamente
             </div>
-            <div className="relative p-6 border border-white/[0.08] rounded-xl bg-[#0d0d0d] max-h-[280px] overflow-hidden flex flex-col">
+            <div className="relative p-6 border border-white/[0.08] rounded-xl bg-[#0d0d0d] max-h-[280px] overflow-y-auto flex flex-col scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10">
               <div className="flex items-center gap-3 mb-5 shrink-0">
                 <img
                   src="/HACK UDC-128.jpg"
