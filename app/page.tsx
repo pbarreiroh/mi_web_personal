@@ -190,6 +190,11 @@ export default function Home() {
         <div className="font-mono text-[11px] tracking-widest text-white/80">
           pb.dev
         </div>
+        
+        <div className="absolute left-1/2 -translate-x-1/2 font-serif italic text-white/70 text-sm tracking-wide pointer-events-none select-none">
+          Bienvenido a mi web
+        </div>
+
         <div className="flex gap-6 text-[10px] uppercase tracking-wider text-white/50">
           <a href="#proyectos" className="hoverable hover:text-white transition-colors">Proyectos</a>
           <a href="#galeria" className="hoverable hover:text-white transition-colors">Galería</a>
@@ -199,12 +204,12 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="relative min-h-screen w-full">
+      <section className="relative min-h-screen w-full overflow-hidden">
         <ParticleCanvas />
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl px-8 md:px-16">
           <ScrollReveal>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-9xl tracking-tight text-white mb-2 leading-none">
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight text-white mb-2 leading-none">
               Pablo <span className="text-white/40 italic">Barreiro.</span>
             </h1>
             <div className="h-10 md:h-12 mt-4">
@@ -213,8 +218,7 @@ export default function Home() {
               </p>
             </div>
             <p className="font-sans text-white/55 text-sm md:text-base leading-relaxed max-w-lg mt-8">
-              Bienvenido a mi web. Me llamo Pablo y estudio Ingeniería Informática. Hago esta web para darme a conocer un poco más y para subir proyectos que vaya consiguiendo a lo largo de la carrera.
-              Además de la carrera, me gusta mucho la tecnología en general, la ciberseguridad, el desarrollo de software y el aprendizaje continuo.
+              Me llamo Pablo, estudio Ingeniería Informática, hago esta web para darme a conocer un poco más y para subir proyectos que vaya creando a lo largo de la carrera.
               Además, en el apartado de Herramientas, te proporciono dos inteligencias artificiales desarrolladas por mi que pueden ayudarte en tu día a día.
             </p>
           </ScrollReveal>
@@ -258,7 +262,7 @@ export default function Home() {
 
           <ScrollReveal>
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <a href="#proyectos" className="font-sans hoverable px-5 py-2.5 bg-white text-[#080808] font-medium text-xs tracking-wide text-center rounded-md transition-colors hover:bg-white/90">
+              <a href="#proyectos" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
                 Ver proyectos
               </a>
               <a href="#contacto" className="font-sans hoverable px-5 py-2.5 border border-transparent text-white/50 text-xs tracking-wide text-center rounded-md hover:text-white hover:bg-white/5 transition-colors">
@@ -309,10 +313,10 @@ export default function Home() {
               </div>
 
               <div className="absolute bottom-0 left-0 right-0 h-[60px] bg-gradient-to-t from-[#111] to-transparent flex items-end justify-center pb-3">
-                <a 
-                  href="https://www.linkedin.com/in/pablo-barreiro-cores-93199a2b5/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://www.linkedin.com/in/pablo-barreiro-cores-93199a2b5/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hoverable px-4 py-1.5 bg-[#1a1a1a] hover:bg-[#222] border border-white/[0.08] text-white/70 hover:text-white transition-colors text-[10px] font-mono rounded-full z-10"
                 >
                   Leer en LinkedIn →
