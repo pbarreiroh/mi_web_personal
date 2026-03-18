@@ -286,39 +286,23 @@ export default function Home() {
             <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45 mb-6">
               Últimamente
             </div>
-            <div className="relative border border-white/[0.08] rounded-xl bg-[#0d0d0d] overflow-hidden" style={{ height: '220px' }}>
-              <div className="p-6 h-full overflow-y-scroll" style={{ scrollbarWidth: 'none' }}
-                onScroll={(e) => {
-                  const el = e.currentTarget;
-                  const overlay = el.nextElementSibling as HTMLElement;
-                  if (el.scrollTop > 40) {
-                    overlay.style.opacity = '1';
-                    overlay.style.pointerEvents = 'auto';
-                  } else {
-                    overlay.style.opacity = '0';
-                    overlay.style.pointerEvents = 'none';
-                  }
-                }}
-              >
-                <div className="flex items-center gap-3 mb-5">
-                  <img src="/HACK UDC-128.jpg" className="w-10 h-10 rounded-full object-cover" alt="Pablo Barreiro" />
-                  <div>
-                    <div className="text-sm text-white/90">Pablo Barreiro</div>
-                    <div className="text-[11px] text-white/40">Estudiante de Ingeniería Informática</div>
-                  </div>
-                  <div className="ml-auto text-white/20">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                  </div>
+            <div className="relative p-6 border border-white/[0.08] rounded-xl bg-[#0d0d0d]" style={{ maxHeight: '220px', overflow: 'hidden' }}>
+              <div className="flex items-center gap-3 mb-5 shrink-0">
+                <img src="/HACK UDC-128.jpg" className="w-10 h-10 rounded-full object-cover" alt="Pablo Barreiro" />
+                <div>
+                  <div className="text-sm text-white/90">Pablo Barreiro</div>
+                  <div className="text-[11px] text-white/40">Estudiante de Ingeniería Informática</div>
                 </div>
-                <div className="border-l border-white/[0.06] pl-4 space-y-3 text-sm text-white/60 leading-relaxed">
-                  <p>Hace dos semanas tuve la oportunidad de participar en mi primer hackathon en HackUDC, una experiencia intensa de 36 horas construyendo una solución de inteligencia artificial desde cero.</p>
-                  <p>El reto consistía en desarrollar un sistema capaz de identificar, a partir de la imagen de una modelo, las prendas que lleva puestas y asociarlas con su referencia exacta dentro de un catálogo de productos.</p>
-                  <p>Nuestro enfoque se basó en un pequeño pipeline de visión por computador. Utilizamos SAM para segmentar las prendas, CLIP para embeddings y FAISS para búsqueda vectorial, integrado en FastAPI.</p>
+                <div className="ml-auto text-white/20">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                  </svg>
                 </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-24 flex items-end justify-center pb-4 transition-opacity duration-300 opacity-0" style={{ background: 'linear-gradient(to top, #0d0d0d 50%, transparent)', pointerEvents: 'none' }}>
+              <div className="border-l border-white/[0.06] pl-4 text-sm text-white/60 leading-relaxed">
+                <p>Hace dos semanas tuve la oportunidad de participar en mi primer hackathon en HackUDC, una experiencia intensa de 36 horas construyendo una solución de inteligencia artificial desde cero.</p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-20 flex items-end justify-center pb-4" style={{ background: 'linear-gradient(to top, #0d0d0d 40%, transparent)' }}>
                 <a href="https://www.linkedin.com/in/pablo-barreiro-cores-93199a2b5/" target="_blank" rel="noopener noreferrer" className="hoverable px-4 py-1.5 bg-[#1a1a1a] hover:bg-[#222] border border-white/[0.08] text-white/70 hover:text-white transition-colors text-[10px] font-mono rounded-full">
                   Leer publicación completa →
                 </a>
@@ -400,31 +384,19 @@ export default function Home() {
         </ScrollReveal>
 
         {/* Guestbook */}
-        {/* Contacto */}
         <ScrollReveal id="contacto">
           <section className="space-y-6">
             <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45">
-              Contacto
+              Guestbook
             </div>
-            <div className="space-y-6">
-              <p className="font-serif italic text-white/50 text-lg leading-relaxed max-w-md">
-                "Aprendo haciendo, fallo rápido y construyo despacio."
-              </p>
-              <div className="flex flex-col gap-2 text-xs text-white/25 font-mono">
-                <span>© {new Date().getFullYear()} Pablo Barreiro. Todos los derechos reservados.</span>
-                <span>Diseño y desarrollo propios. Prohibida la reproducción sin permiso.</span>
-              </div>
-              <a href="mailto:pablo.barreiro.cores@gmail.com" className="hoverable inline-flex items-center gap-2 text-xs text-white/40 hover:text-white/80 transition-colors border border-white/10 hover:border-white/30 px-4 py-2 rounded-md font-mono">
-                pablo.barreiro.cores@gmail.com →
-              </a>
-            </div>
+            <Guestbook />
           </section>
         </ScrollReveal>
       </main>
 
       {/* Footer */}
       <footer className="py-12 text-center text-white/15 text-xs font-mono">
-        pablo barreiro © {new Date().getFullYear()}
+        pb.dev © {new Date().getFullYear()}
       </footer>
     </div>
   );

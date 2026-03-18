@@ -82,7 +82,7 @@ export default function RootLayout({
             requestAnimationFrame(loop);
           })();
         `}} />
-        <div id="google_translate_element" className="fixed bottom-4 left-4 z-[9999]"></div>
+        <div id="google_translate_element" style={{ position: 'fixed', bottom: '1rem', left: '1rem', zIndex: 9999 }}></div>
         <script dangerouslySetInnerHTML={{
           __html: `
   function googleTranslateElementInit() {
