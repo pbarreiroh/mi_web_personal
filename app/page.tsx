@@ -192,7 +192,7 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 bg-[rgba(8,8,8,0.85)] backdrop-blur border-b border-white/[0.04]">
         <div className="relative flex justify-between items-center w-full">
           <div className="font-mono text-[11px] tracking-widest text-white/80">pb.dev</div>
-          <div className="absolute left-1/2 -translate-x-1/2 font-serif italic text-white/70 text-sm tracking-wide pointer-events-none select-none">
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 font-serif italic text-white/70 text-sm tracking-wide pointer-events-none select-none">
             Bienvenido a mi web
           </div>
           <div className="flex gap-6 text-[10px] uppercase tracking-wider text-white/50">
@@ -205,10 +205,10 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="relative min-h-screen w-full overflow-hidden">
+      <section className="relative min-h-screen w-full flex items-center">
 
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl px-8 md:px-16">
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-8 md:px-16 pt-24 md:pt-32 pb-20">
           <ScrollReveal>
             <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight text-white mb-2 leading-none">
               Pablo <span className="text-white/40 italic">Barreiro.</span>
@@ -286,13 +286,9 @@ export default function Home() {
             <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45 mb-6">
               Últimamente
             </div>
-            <div className="relative p-6 border border-white/[0.08] rounded-xl bg-[#0d0d0d] max-h-[280px] overflow-y-auto flex flex-col scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10">
+            <div className="relative p-6 border border-white/[0.08] rounded-xl bg-[#0d0d0d]" style={{ maxHeight: '220px', overflow: 'hidden' }}>
               <div className="flex items-center gap-3 mb-5 shrink-0">
-                <img
-                  src="/HACK UDC-128.jpg"
-                  className="w-10 h-10 rounded-full object-cover"
-                  alt="Pablo Barreiro"
-                />
+                <img src="/HACK UDC-128.jpg" className="w-10 h-10 rounded-full object-cover" alt="Pablo Barreiro" />
                 <div>
                   <div className="text-sm text-white/90">Pablo Barreiro</div>
                   <div className="text-[11px] text-white/40">Estudiante de Ingeniería Informática</div>
@@ -303,27 +299,12 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-
-              <div className="border-l border-white/[0.06] pl-4 space-y-3 text-sm text-white/60 leading-relaxed">
-                <p>
-                  Hace dos semanas tuve la oportunidad de participar en mi primer hackathon en HackUDC, una experiencia intensa de 36 horas construyendo una solución de inteligencia artificial desde cero.
-                </p>
-                <p>
-                  El reto consistía en desarrollar un sistema capaz de identificar, a partir de la imagen de una modelo, las prendas que lleva puestas y asociarlas con su referencia exacta dentro de un catálogo de productos. Para ello se nos proporcionaba un dataset con imágenes etiquetadas, el catálogo completo de artículos y un conjunto de imágenes de prueba con el que se evaluaba la precisión del sistema frente a otros equipos en una plataforma con métricas en tiempo real.
-                </p>
-                <p>
-                  Nuestro enfoque se basó en un pequeño pipeline de visión por computador. Utilizamos Segment Anything Model (SAM) para segmentar las prendas en la imagen, generamos embeddings visuales con CLIP (ViT-L/14) y realizamos la búsqueda de productos similares mediante búsqueda vectorial con FAISS. Todo esto lo integramos en una aplicación web sencilla con FastAPI, que permitía subir una imagen y devolver las coincidencias detectadas en el catálogo.
-                </p>
+              <div className="border-l border-white/[0.06] pl-4 text-sm text-white/60 leading-relaxed">
+                <p>Hace dos semanas tuve la oportunidad de participar en mi primer hackathon en HackUDC, una experiencia intensa de 36 horas construyendo una solución de inteligencia artificial desde cero.</p>
               </div>
-
-              <div className="absolute bottom-0 left-0 right-0 h-[60px] bg-gradient-to-t from-[#111] to-transparent flex items-end justify-center pb-3">
-                <a
-                  href="https://www.linkedin.com/in/pablo-barreiro-cores-93199a2b5/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hoverable px-4 py-1.5 bg-[#1a1a1a] hover:bg-[#222] border border-white/[0.08] text-white/70 hover:text-white transition-colors text-[10px] font-mono rounded-full z-10"
-                >
-                  Leer en LinkedIn →
+              <div className="absolute bottom-0 left-0 right-0 h-20 flex items-end justify-center pb-4" style={{ background: 'linear-gradient(to top, #0d0d0d 40%, transparent)' }}>
+                <a href="https://www.linkedin.com/in/pablo-barreiro-cores-93199a2b5/" target="_blank" rel="noopener noreferrer" className="hoverable px-4 py-1.5 bg-[#1a1a1a] hover:bg-[#222] border border-white/[0.08] text-white/70 hover:text-white transition-colors text-[10px] font-mono rounded-full">
+                  Leer publicación completa →
                 </a>
               </div>
             </div>

@@ -47,7 +47,8 @@ export default function RootLayout({
           transition: 'transform 0.15s ease-out'
         }}></div>
         {children}
-        <script dangerouslySetInnerHTML={{__html: `
+        <script dangerouslySetInnerHTML={{
+          __html: `
           let cx=0,cy=0,tx=0,ty=0;
           let isHovering = false;
           
@@ -81,6 +82,19 @@ export default function RootLayout({
             requestAnimationFrame(loop);
           })();
         `}} />
+        <div id="google_translate_element" style={{ position: 'fixed', bottom: '1rem', left: '1rem', zIndex: 9999 }}></div>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'es',
+      includedLanguages: 'en,es',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+`}} />
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" />
       </body>
     </html>
   );
