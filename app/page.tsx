@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import VisitTracker from './components/VisitTracker';
 import ScrollReveal from './components/ScrollReveal';
+import { useLanguage } from '@/app/contexts/LanguageContext';
+import LanguageToggle from '@/app/components/LanguageToggle';
 
 // Componente para el Hero con canvas de partículas
 const ParticleCanvas = () => {
@@ -140,25 +142,27 @@ const ParticleCanvas = () => {
 };
 
 export default function Home() {
+  const { t } = useLanguage();
+
   const projects = [
     {
       name: 'INDIFIT AI',
-      description: 'Herramienta de IA empezada durante el HackUDC26 que no llegó a terminarse',
+      description: t('project.indifit.desc'),
       tags: ['FAISS', 'SMA', 'CLIP', 'Python'],
     },
     {
-      name: 'Personalizacion de Terminal en Linux',
-      description: 'Script para personalizar la terminal de Linux',
+      name: t('project.linux.name'),
+      description: t('project.linux.desc'),
       tags: ['Bash', 'Zsh', 'Oh My Zsh'],
     },
     {
-      name: 'Terminal Personal',
-      description: 'Emulador de terminal en el navegador web con comandos reales ejecutables y sistema de archivos.',
+      name: t('project.terminal.name'),
+      description: t('project.terminal.desc'),
       tags: ['TypeScript', 'Next.js', 'Tailwind'],
     },
   ];
 
-  const phrases = ["Tecnología", "Aprendizaje", "Ciberseguridad", "Desarrollo"];
+  const phrases = [t('hero.phrase.0'), t('hero.phrase.1'), t('hero.phrase.2'), t('hero.phrase.3')];
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
@@ -191,13 +195,13 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 bg-[rgba(8,8,8,0.85)] backdrop-blur border-b border-white/[0.04]">
         <div className="relative flex justify-end items-center w-full">
           <div className="hidden md:block absolute left-1/2 -translate-x-1/2 font-serif italic text-white text-sm tracking-wide pointer-events-none select-none">
-            Bienvenido a mi web
+            {t('nav.welcome')}
           </div>
           <div className="flex gap-6 text-[10px] uppercase tracking-wider text-white/50">
-            <a href="#herramientas" className="hoverable hover:text-white transition-colors">Herramientas</a>
-            <a href="#proyectos" className="hoverable hover:text-white transition-colors">Proyectos</a>
-            <a href="#galeria" className="hoverable hover:text-white transition-colors">Galería</a>
-            <a href="#contacto" className="hoverable hover:text-white transition-colors">Contacto</a>
+            <a href="#herramientas" className="hoverable hover:text-white transition-colors">{t('nav.tools')}</a>
+            <a href="#proyectos" className="hoverable hover:text-white transition-colors">{t('nav.projects')}</a>
+            <a href="#galeria" className="hoverable hover:text-white transition-colors">{t('nav.gallery')}</a>
+            <a href="#contacto" className="hoverable hover:text-white transition-colors">{t('nav.contact')}</a>
           </div>
         </div>
       </nav>
@@ -217,8 +221,7 @@ export default function Home() {
               </p>
             </div>
             <p className="font-sans text-white/55 text-sm md:text-base leading-relaxed max-w-lg mt-8">
-              Me llamo Pablo, estudio Ingeniería Informática, hago esta web para mostrar un poco más de mí y para subir proyectos que vaya creando a lo largo de la carrera.
-              Además, en el apartado de Herramientas, te proporciono dos inteligencias artificiales desarrolladas por mi que pueden ayudarte en tu día a día.
+              {t('hero.bio')}
             </p>
           </ScrollReveal>
 
@@ -262,13 +265,13 @@ export default function Home() {
           <ScrollReveal>
             <div className="flex flex-col sm:flex-row gap-3 mt-8">
               <a href="#herramientas" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
-                Explorar herramientas
+                {t('hero.btn.tools')}
               </a>
               <a href="#proyectos" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
-                Ver proyectos
+                {t('hero.btn.projects')}
               </a>
               <a href="#contacto" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
-                Contáctame
+                {t('hero.btn.contact')}
               </a>
             </div>
           </ScrollReveal>
@@ -282,14 +285,14 @@ export default function Home() {
         <ScrollReveal>
           <section className="space-y-6">
             <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45 mb-6">
-              Últimamente
+              {t('section.lately')}
             </div>
             <div className="relative p-6 border border-white/[0.08] rounded-xl bg-[#0d0d0d]" style={{ maxHeight: '220px', overflow: 'hidden' }}>
               <div className="flex items-center gap-3 mb-5 shrink-0">
                 <img src="/HACK UDC-128.jpg" className="w-10 h-10 rounded-full object-cover" alt="Pablo Barreiro" />
                 <div>
                   <div className="text-sm text-white/90">Pablo Barreiro</div>
-                  <div className="text-[11px] text-white/40">Estudiante de Ingeniería Informática</div>
+                  <div className="text-[11px] text-white/40">{t('linkedin.bio')}</div>
                 </div>
                 <div className="ml-auto text-white/20">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -298,11 +301,11 @@ export default function Home() {
                 </div>
               </div>
               <div className="border-l border-white/[0.06] pl-4 text-sm text-white/60 leading-relaxed">
-                <p>Hace dos semanas tuve la oportunidad de participar en mi primer hackathon en HackUDC, una experiencia intensa de 36 horas construyendo una solución de inteligencia artificial desde cero.</p>
+                <p>{t('linkedin.post')}</p>
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-20 flex items-end justify-center pb-4" style={{ background: 'linear-gradient(to top, #0d0d0d 40%, transparent)' }}>
                 <a href="https://www.linkedin.com/in/pablo-barreiro-cores-93199a2b5/" target="_blank" rel="noopener noreferrer" className="hoverable px-4 py-1.5 bg-[#1a1a1a] hover:bg-[#222] border border-white/[0.08] text-white/70 hover:text-white transition-colors text-[10px] font-mono rounded-full">
-                  Leer publicación completa →
+                  {t('linkedin.readmore')}
                 </a>
               </div>
             </div>
@@ -313,13 +316,25 @@ export default function Home() {
         <ScrollReveal id="galeria">
           <section className="space-y-6">
             <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45">
-              Galería
+              {t('section.gallery')}
             </div>
             <div className="grid grid-cols-3 gap-3">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
-                </div>
-              ))}
+              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
+                <img src="/IMG-20220816-WA0010_Original.jpg" alt="Agosto 2022" className="w-full h-full object-cover" />
+              </div>
+              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
+                <img src="/IMG_2662.jpeg" alt="Junio 2025" className="w-full h-full object-cover" />
+              </div>
+              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
+              </div>
+              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
+                <img src="/IMG_2727.jpg" alt="Enero 2023" className="w-full h-full object-cover" />
+              </div>
+              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
+              </div>
+              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
+                <img src="/IMG_6790.jpeg" alt="Marzo 2026" className="w-full h-full object-cover" />
+              </div>
             </div>
           </section>
         </ScrollReveal>
@@ -328,27 +343,27 @@ export default function Home() {
         <ScrollReveal>
           <section id="herramientas" className="space-y-6">
             <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45">
-              Herramientas
+              {t('section.tools')}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-5 border border-white/[0.07] rounded-xl bg-white/[0.02] flex flex-col gap-3">
                 <div className="w-8 h-8 rounded-md bg-white/[0.05] border border-white/[0.08] flex items-center justify-center">
                   <span className="text-white/40 text-xs">01</span>
                 </div>
-                <div className="text-white/70 text-sm font-medium">Próximamente</div>
-                <div className="text-white/25 text-xs leading-relaxed">Herramienta en desarrollo.</div>
+                <div className="text-white/70 text-sm font-medium">{t('tools.soon')}</div>
+                <div className="text-white/25 text-xs leading-relaxed">{t('tools.wip.desc')}</div>
                 <div className="mt-auto pt-2">
-                  <span className="text-[9px] font-mono border border-white/[0.08] text-white/25 px-2 py-1 rounded-full">wip</span>
+                  <span className="text-[9px] font-mono border border-white/[0.08] text-white/25 px-2 py-1 rounded-full">{t('tools.wip.badge')}</span>
                 </div>
               </div>
               <div className="p-5 border border-white/[0.07] rounded-xl bg-white/[0.02] flex flex-col gap-3">
                 <div className="w-8 h-8 rounded-md bg-white/[0.05] border border-white/[0.08] flex items-center justify-center">
                   <span className="text-white/40 text-xs">02</span>
                 </div>
-                <div className="text-white/70 text-sm font-medium">Próximamente</div>
-                <div className="text-white/25 text-xs leading-relaxed">Herramienta en desarrollo.</div>
+                <div className="text-white/70 text-sm font-medium">{t('tools.soon')}</div>
+                <div className="text-white/25 text-xs leading-relaxed">{t('tools.wip.desc')}</div>
                 <div className="mt-auto pt-2">
-                  <span className="text-[9px] font-mono border border-white/[0.08] text-white/25 px-2 py-1 rounded-full">wip</span>
+                  <span className="text-[9px] font-mono border border-white/[0.08] text-white/25 px-2 py-1 rounded-full">{t('tools.wip.badge')}</span>
                 </div>
               </div>
             </div>
@@ -359,7 +374,7 @@ export default function Home() {
         <ScrollReveal id="proyectos">
           <section className="space-y-6">
             <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45">
-              Proyectos
+              {t('section.projects')}
             </div>
             <div className="flex flex-col border-t border-white/5">
               {projects.map((project, idx) => (
@@ -385,8 +400,9 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-12 text-center text-white/15 text-xs font-mono">
-        pablo barreiro © 2026{new Date().getFullYear()}
+        {t('footer.copy')} © {new Date().getFullYear()}
       </footer>
+      <LanguageToggle />
     </div>
   );
 }

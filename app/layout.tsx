@@ -36,22 +36,22 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${dmSerif.variable} antialiased selection:bg-white/20`}
       >
         <LanguageProvider>
-        <div id="cursor" style={{
-          position: 'fixed',
-          pointerEvents: 'none',
-          mixBlendMode: 'difference',
-          zIndex: 9999,
-          borderRadius: '50%',
-          background: 'white',
-          width: '8px',
-          height: '8px',
-          left: '-10px',
-          top: '-10px',
-          transition: 'transform 0.15s ease-out'
-        }}></div>
-        {children}
-        <script dangerouslySetInnerHTML={{
-          __html: `
+          <div id="cursor" style={{
+            position: 'fixed',
+            pointerEvents: 'none',
+            mixBlendMode: 'difference',
+            zIndex: 9999,
+            borderRadius: '50%',
+            background: 'white',
+            width: '8px',
+            height: '8px',
+            left: '-10px',
+            top: '-10px',
+            transition: 'transform 0.15s ease-out'
+          }}></div>
+          {children}
+          <script dangerouslySetInnerHTML={{
+            __html: `
           let cx=0,cy=0,tx=0,ty=0;
           let isHovering = false;
           
@@ -85,7 +85,7 @@ export default function RootLayout({
             requestAnimationFrame(loop);
           })();
         `}} />
-        <LanguageToggle />
+          <LanguageToggle />
         </LanguageProvider>
       </body>
     </html>
