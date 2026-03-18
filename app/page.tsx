@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
-import Guestbook from './components/Guestbook';
 import VisitTracker from './components/VisitTracker';
 import ScrollReveal from './components/ScrollReveal';
 
@@ -190,9 +189,8 @@ export default function Home() {
 
       {/* Nav fija */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 bg-[rgba(8,8,8,0.85)] backdrop-blur border-b border-white/[0.04]">
-        <div className="relative flex justify-between items-center w-full">
-          <div className="font-mono text-[11px] tracking-widest text-white/80">pb.dev</div>
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 font-serif italic text-white/70 text-sm tracking-wide pointer-events-none select-none">
+        <div className="relative flex justify-end items-center w-full">
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 font-serif italic text-white text-sm tracking-wide pointer-events-none select-none">
             Bienvenido a mi web
           </div>
           <div className="flex gap-6 text-[10px] uppercase tracking-wider text-white/50">
@@ -383,20 +381,11 @@ export default function Home() {
           </section>
         </ScrollReveal>
 
-        {/* Guestbook */}
-        <ScrollReveal id="contacto">
-          <section className="space-y-6">
-            <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45">
-              Guestbook
-            </div>
-            <Guestbook />
-          </section>
-        </ScrollReveal>
       </main>
 
       {/* Footer */}
       <footer className="py-12 text-center text-white/15 text-xs font-mono">
-        pb.dev © {new Date().getFullYear()}
+        pablo barreiro © 2026{new Date().getFullYear()}
       </footer>
     </div>
   );

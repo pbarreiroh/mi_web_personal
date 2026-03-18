@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "./contexts/LanguageContext";
+import LanguageToggle from "./components/LanguageToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +35,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${dmSerif.variable} antialiased selection:bg-white/20`}
       >
+        <LanguageProvider>
         <div id="cursor" style={{
           position: 'fixed',
           pointerEvents: 'none',
@@ -82,19 +85,8 @@ export default function RootLayout({
             requestAnimationFrame(loop);
           })();
         `}} />
-        <div id="google_translate_element" style={{ position: 'fixed', bottom: '1rem', left: '1rem', zIndex: 9999 }}></div>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'es',
-      includedLanguages: 'en,es',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-      autoDisplay: false
-    }, 'google_translate_element');
-  }
-`}} />
-        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" />
+        <LanguageToggle />
+        </LanguageProvider>
       </body>
     </html>
   );
