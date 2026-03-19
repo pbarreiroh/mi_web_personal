@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '../../lib/supabase';
+import { supabaseServer } from '../../lib/supabaseServer';
 import { rateLimit } from '../../lib/rateLimit';
 
 const MAX_NAME_LENGTH = 50;
@@ -10,7 +10,7 @@ function sanitize(str: string): string {
 }
 
 export async function GET() {
-  const { data, error } = await supabase
+  const { data, error } = await supabaseServer
     .from('guestbook')
     .select('*')
     .order('created_at', { ascending: false });
@@ -67,7 +67,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid content' }, { status: 400 });
   }
 
-  const { data, error } = await supabase
+  const { data, error } = await supabaseServer
     .from('guestbook')
     .insert([{ name: cleanName, message: cleanMessage, ip }]);
 
