@@ -227,13 +227,13 @@ export default function Home() {
 
           <ScrollReveal>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-12 max-w-3xl">
-              <a href="mailto:pablo.barreiro.cores@gmail.com" className="hoverable p-4 border border-[rgba(255,255,255,0.07)] rounded-lg bg-white/[0.01] hover:bg-white/[0.03] transition-colors flex flex-col gap-2 relative overflow-hidden group">
+              <a href="mailto:pbarreirocor@gmail.com" className="hoverable p-4 border border-[rgba(255,255,255,0.07)] rounded-lg bg-white/[0.01] hover:bg-white/[0.03] transition-colors flex flex-col gap-2 relative overflow-hidden group">
                 <svg className="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <div>
                   <div className="font-sans text-xs text-white/90 font-medium">Email</div>
-                  <div className="font-sans text-[10px] text-white/45 mt-1 truncate">pablo.barreiro.cores@gmail.com</div>
+                  <div className="font-sans text-[10px] text-white/45 mt-1 truncate">pbarreirocor@gmail.com</div>
                 </div>
               </a>
 

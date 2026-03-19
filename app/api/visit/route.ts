@@ -1,9 +1,22 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '../../lib/supabase';
+import { rateLimit } from '../../lib/rateLimit';
 
 export async function POST(request: Request) {
-  const ip = request.headers.get('x-forwarded-for') || 'Unknown';
+  const ip = request.headers.get('x-real-ip') ||
+    request.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
+    'Unknown';
+
+  const { allowed } = rateLimit(ip + '_visit', 10);
+  if (!allowed) {
+    return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+  }
+
   const userAgent = request.headers.get('user-agent') || 'Unknown';
+
+  if (userAgent.length > 500) {
+    return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
+  }
 
   const { data, error } = await supabase
     .from('visits')

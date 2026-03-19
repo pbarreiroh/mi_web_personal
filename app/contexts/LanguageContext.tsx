@@ -2,10 +2,10 @@
 import { createContext, useContext, useState } from 'react'
 import React from 'react'
 
-type Language = 'es' | 'en'
+type Language = 'en' | 'es'
 
 const translations = {
-  es: {
+  en: {
     'nav.welcome': 'Bienvenido a mi web',
     'nav.tools': 'Herramientas',
     'nav.projects': 'Proyectos',
@@ -36,7 +36,7 @@ const translations = {
     'project.linux.desc': 'Script para personalizar la terminal de Linux',
     'footer.copy': 'pablo barreiro',
   },
-  en: {
+  es: {
     'nav.welcome': 'Welcome to my site',
     'nav.tools': 'Tools',
     'nav.projects': 'Projects',
