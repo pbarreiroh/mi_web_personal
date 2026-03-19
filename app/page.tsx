@@ -5,6 +5,7 @@ import VisitTracker from './components/VisitTracker';
 import ScrollReveal from './components/ScrollReveal';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import LanguageToggle from '@/app/components/LanguageToggle';
+import ContactModal from './components/ContactModal';
 
 // Componente para el Hero con canvas de partículas
 const ParticleCanvas = () => {
@@ -165,6 +166,7 @@ export default function Home() {
   const phrases = [t('hero.phrase.0'), t('hero.phrase.1'), t('hero.phrase.2'), t('hero.phrase.3')];
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [fade, setFade] = useState(true);
+  const [contactOpen, setContactOpen] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -270,9 +272,9 @@ export default function Home() {
               <a href="#proyectos" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
                 {t('hero.btn.projects')}
               </a>
-              <a href="#contacto" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
+              <button onClick={() => setContactOpen(true)} className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
                 {t('hero.btn.contact')}
-              </a>
+              </button>
             </div>
           </ScrollReveal>
         </div>
@@ -403,6 +405,7 @@ export default function Home() {
         {t('footer.copy')} © {new Date().getFullYear()}
       </footer>
       <LanguageToggle />
+      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   );
 }
