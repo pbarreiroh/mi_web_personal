@@ -61,21 +61,19 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         <div className="flex gap-1 p-1 bg-white/[0.04] rounded-xl mb-6">
           <button
             onClick={() => setType('email')}
-            className={`flex-1 py-2 text-xs font-medium rounded-lg transition-all duration-200 ${
-              type === 'email'
+            className={`flex-1 py-2 text-xs font-medium rounded-lg transition-all duration-200 ${type === 'email'
                 ? 'bg-white text-black'
                 : 'text-neutral-500 hover:text-white'
-            }`}
+              }`}
           >
             Email
           </button>
           <button
             onClick={() => setType('message')}
-            className={`flex-1 py-2 text-xs font-medium rounded-lg transition-all duration-200 ${
-              type === 'message'
+            className={`flex-1 py-2 text-xs font-medium rounded-lg transition-all duration-200 ${type === 'message'
                 ? 'bg-white text-black'
                 : 'text-neutral-500 hover:text-white'
-            }`}
+              }`}
           >
             Mensaje anónimo
           </button>
@@ -84,7 +82,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         {/* Subtítulo contextual */}
         <p className="text-neutral-600 text-xs leading-relaxed mb-6">
           {type === 'email'
-            ? 'Para empresas, colaboradores o cualquier propuesta profesional. Te responderé lo antes posible.'
+            ? 'Estoy abierto a nuevas propuestas y colaboraciones. Si crees que podemos crear algo interesante juntos, házmelo saber.'
             : 'Si quieres contarme algo de forma anónima o simplemente necesitas algo de mí, escríbelo aquí.'}
         </p>
 

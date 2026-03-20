@@ -4,6 +4,9 @@ import { useEffect } from 'react'
 
 export default function CursorFollower() {
   useEffect(() => {
+    // No hacer nada en dispositivos táctiles
+    if (window.matchMedia('(hover: none)').matches) return
+
     let cx = 0, cy = 0, tx = 0, ty = 0
     let isHovering = false
 
@@ -60,7 +63,8 @@ export default function CursorFollower() {
         height: '8px',
         left: '-10px',
         top: '-10px',
-        transition: 'transform 0.15s ease-out'
+        transition: 'transform 0.15s ease-out',
+        display: typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches ? 'none' : 'block',
       }}
     />
   )

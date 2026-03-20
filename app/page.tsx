@@ -6,6 +6,7 @@ import ScrollReveal from './components/ScrollReveal';
 import { useLanguage } from '@/app/contexts/LanguageContext';
 import LanguageToggle from '@/app/components/LanguageToggle';
 import ContactModal from './components/ContactModal';
+import GalleryLightbox from './components/GalleryLightbox';
 
 // Componente para el Hero con canvas de partículas
 const ParticleCanvas = () => {
@@ -145,6 +146,13 @@ const ParticleCanvas = () => {
 export default function Home() {
   const { t } = useLanguage();
 
+  const galleryImages = [
+    { src: '/IMG-20220816-WA0010_Original.jpg', alt: 'Agosto 2022' },
+    { src: '/IMG_2662.jpeg', alt: 'Junio 2025' },
+    { src: '/enero23.jpg', alt: 'Enero 2023' },
+    { src: '/IMG_6790.jpeg', alt: 'Marzo 2026' },
+  ]
+
   const projects = [
     {
       name: 'INDIFIT AI',
@@ -167,6 +175,8 @@ export default function Home() {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const [contactOpen, setContactOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -203,7 +213,7 @@ export default function Home() {
             <a href="#herramientas" className="hoverable hover:text-white transition-colors">{t('nav.tools')}</a>
             <a href="#proyectos" className="hoverable hover:text-white transition-colors">{t('nav.projects')}</a>
             <a href="#galeria" className="hoverable hover:text-white transition-colors">{t('nav.gallery')}</a>
-            <a href="#contacto" className="hoverable hover:text-white transition-colors">{t('nav.contact')}</a>
+            <button onClick={() => setContactOpen(true)} className="hoverable hover:text-white transition-colors text-[10px] uppercase tracking-wider">{t('nav.contact')}</button>
           </div>
         </div>
       </nav>
@@ -213,7 +223,7 @@ export default function Home() {
 
 
         <div className="relative z-10 w-full max-w-4xl mx-auto px-8 md:px-16 pt-24 md:pt-32 pb-20">
-          <ScrollReveal>
+          <ScrollReveal delay={0}>
             <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight text-white mb-2 leading-none">
               Pablo <span className="text-white/40 italic">Barreiro.</span>
             </h1>
@@ -227,7 +237,7 @@ export default function Home() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal>
+          <ScrollReveal delay={150}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-12 max-w-3xl">
               <a href="mailto:pbarreirocor@gmail.com" className="hoverable p-4 border border-[rgba(255,255,255,0.07)] rounded-lg bg-white/[0.01] hover:bg-white/[0.03] transition-colors flex flex-col gap-2 relative overflow-hidden group">
                 <svg className="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -264,7 +274,7 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal>
+          <ScrollReveal delay={300}>
             <div className="flex flex-col sm:flex-row gap-3 mt-8">
               <a href="#herramientas" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
                 {t('hero.btn.tools')}
@@ -321,20 +331,30 @@ export default function Home() {
               {t('section.gallery')}
             </div>
             <div className="grid grid-cols-3 gap-3">
-              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
+              <div
+                className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden cursor-pointer"
+                onClick={() => { setLightboxIndex(0); setLightboxOpen(true) }}
+              >
                 <img src="/IMG-20220816-WA0010_Original.jpg" alt="Agosto 2022" className="w-full h-full object-cover" />
               </div>
-              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
+              <div
+                className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden cursor-pointer"
+                onClick={() => { setLightboxIndex(1); setLightboxOpen(true) }}
+              >
                 <img src="/IMG_2662.jpeg" alt="Junio 2025" className="w-full h-full object-cover" />
               </div>
-              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
+              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden" />
+              <div
+                className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden cursor-pointer"
+                onClick={() => { setLightboxIndex(2); setLightboxOpen(true) }}
+              >
+                <img src="/enero23.jpg" alt="Enero 2023" className="w-full h-full object-cover" />
               </div>
-              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
-                <img src="/IMG_2727.jpg" alt="Enero 2023" className="w-full h-full object-cover" />
-              </div>
-              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
-              </div>
-              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden">
+              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden" />
+              <div
+                className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden cursor-pointer"
+                onClick={() => { setLightboxIndex(3); setLightboxOpen(true) }}
+              >
                 <img src="/IMG_6790.jpeg" alt="Marzo 2026" className="w-full h-full object-cover" />
               </div>
             </div>
@@ -406,6 +426,13 @@ export default function Home() {
       </footer>
       <LanguageToggle />
       <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      {lightboxOpen && (
+        <GalleryLightbox
+          images={galleryImages}
+          initialIndex={lightboxIndex}
+          onClose={() => setLightboxOpen(false)}
+        />
+      )}
     </div>
   );
 }
