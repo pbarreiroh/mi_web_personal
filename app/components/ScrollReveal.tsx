@@ -23,8 +23,8 @@ export default function ScrollReveal({ children, className = "", id, delay = 0 }
       },
       {
         root: null,
-        rootMargin: "-40px",
-        threshold: 0.15,
+        rootMargin: "0px",
+        threshold: 0.05,
       }
     );
 

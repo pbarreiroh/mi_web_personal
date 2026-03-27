@@ -143,8 +143,23 @@ const ParticleCanvas = () => {
   );
 };
 
+function AnimatedDots() {
+  const [dots, setDots] = useState(0)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDots(d => (d + 1) % 4)
+    }, 500)
+    return () => clearInterval(interval)
+  }, [])
+  return <span className="inline-block w-6 text-left">{'.'.repeat(dots)}</span>
+}
+
 export default function Home() {
   const { t } = useLanguage();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const galleryImages = [
     { src: '/IMG-20220816-WA0010_Original.jpg', alt: 'Agosto 2022' },
@@ -316,7 +331,7 @@ export default function Home() {
                 <p>{t('linkedin.post')}</p>
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-20 flex items-end justify-center pb-4" style={{ background: 'linear-gradient(to top, #0d0d0d 40%, transparent)' }}>
-                <a href="https://www.linkedin.com/in/pablo-barreiro-cores-93199a2b5/" target="_blank" rel="noopener noreferrer" className="hoverable px-4 py-1.5 bg-[#1a1a1a] hover:bg-[#222] border border-white/[0.08] text-white/70 hover:text-white transition-colors text-[10px] font-mono rounded-full">
+                <a href="https://www.linkedin.com/posts/pablo-barreiro-cores-93199a2b5_hace-dos-semanas-tuve-la-oportunidad-de-participar-activity-7438267951851626496-IS8G?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEvJXbUBo-opj8ZNh35LQf3_uH5MQJFXcUc" target="_blank" rel="noopener noreferrer" className="hoverable px-4 py-1.5 bg-[#1a1a1a] hover:bg-[#222] border border-white/[0.08] text-white/70 hover:text-white transition-colors text-[10px] font-mono rounded-full">
                   {t('linkedin.readmore')}
                 </a>
               </div>
@@ -368,26 +383,36 @@ export default function Home() {
               {t('section.tools')}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-5 border border-white/[0.07] rounded-xl bg-white/[0.02] flex flex-col gap-3">
-                <div className="w-8 h-8 rounded-md bg-white/[0.05] border border-white/[0.08] flex items-center justify-center">
-                  <span className="text-white/40 text-xs">01</span>
-                </div>
-                <div className="text-white/70 text-sm font-medium">{t('tools.soon')}</div>
-                <div className="text-white/25 text-xs leading-relaxed">{t('tools.wip.desc')}</div>
-                <div className="mt-auto pt-2">
-                  <span className="text-[9px] font-mono border border-white/[0.08] text-white/25 px-2 py-1 rounded-full">{t('tools.wip.badge')}</span>
-                </div>
-              </div>
-              <div className="p-5 border border-white/[0.07] rounded-xl bg-white/[0.02] flex flex-col gap-3">
-                <div className="w-8 h-8 rounded-md bg-white/[0.05] border border-white/[0.08] flex items-center justify-center">
-                  <span className="text-white/40 text-xs">02</span>
-                </div>
-                <div className="text-white/70 text-sm font-medium">{t('tools.soon')}</div>
-                <div className="text-white/25 text-xs leading-relaxed">{t('tools.wip.desc')}</div>
-                <div className="mt-auto pt-2">
-                  <span className="text-[9px] font-mono border border-white/[0.08] text-white/25 px-2 py-1 rounded-full">{t('tools.wip.badge')}</span>
+
+              {/* Card 1 — pbfocus */}
+              <div className="p-7 border border-white rounded-xl bg-white/[0.02] flex flex-col gap-4 min-h-[200px]">
+                <p className="text-white/50 text-xs leading-relaxed">
+                  Un ecosistema de productividad y bienestar impulsado por IA.
+                </p>
+                <div className="mt-auto">
+                  <a
+                    href="https://pbfocus.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hoverable block w-full bg-white text-black font-medium py-3 rounded-lg text-sm text-center hover:bg-white/90 transition-colors"
+                  >
+                    Visitar pbfocus
+                  </a>
                 </div>
               </div>
+
+              {/* Card 2 — En desarrollo */}
+              <div className="p-7 border border-white rounded-xl bg-white/[0.02] flex flex-col gap-4 min-h-[200px]">
+                <div className="text-white/70 text-sm font-medium flex items-center gap-0.5">
+                  En desarrollo<AnimatedDots />
+                </div>
+                <div className="mt-auto">
+                  <div className="w-full border border-white/40 text-white/60 font-medium py-3 rounded-lg text-sm text-center">
+                    Disponible el día 1 de Julio
+                  </div>
+                </div>
+              </div>
+
             </div>
           </section>
         </ScrollReveal>

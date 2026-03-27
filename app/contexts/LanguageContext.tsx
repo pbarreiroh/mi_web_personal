@@ -26,8 +26,8 @@ const translations = {
     'linkedin.readmore': 'Leer publicación completa →',
     'linkedin.bio': 'Estudiante de Ingeniería Informática',
     'linkedin.post': 'Hace dos semanas tuve la oportunidad de participar en mi primer hackathon en HackUDC, una experiencia intensa de 36 horas construyendo una solución de inteligencia artificial desde cero.',
-    'tools.soon': 'Próximamente',
-    'tools.wip.desc': 'Herramienta en desarrollo.',
+    'tools.soon': 'In development',
+    'tools.wip.desc': 'An AI-powered productivity and wellbeing ecosystem.',
     'tools.wip.badge': 'wip',
     'project.indifit.desc': 'Herramienta de IA empezada durante el HackUDC26 que no llegó a terminarse',
     'project.terminal.name': 'Terminal Personal',
@@ -77,6 +77,16 @@ const LanguageContext = createContext<{
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>('es')
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const browserLang = navigator.language.split('-')[0]
+      if (browserLang === 'en') {
+        setLanguage('en')
+      }
+    }
+  }, [])
+
   const t = (key: keyof typeof translations.es): string =>
     translations[language][key] ?? key
   return (
