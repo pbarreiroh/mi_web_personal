@@ -164,7 +164,9 @@ export default function Home() {
   const galleryImages = [
     { src: '/IMG-20220816-WA0010_Original.jpg', alt: 'Agosto 2022' },
     { src: '/IMG_2662.jpeg', alt: 'Junio 2025' },
+    { src: '/IMG_6866.HEIC', alt: 'IMG 6866' },
     { src: '/enero23.jpg', alt: 'Enero 2023' },
+    { src: '/IMG-20231006-WA0043_Original.jpg', alt: 'Octubre 2023' },
     { src: '/IMG_6790.jpeg', alt: 'Marzo 2026' },
   ]
 
@@ -358,17 +360,27 @@ export default function Home() {
               >
                 <img src="/IMG_2662.jpeg" alt="Junio 2025" className="w-full h-full object-cover" />
               </div>
-              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden" />
               <div
                 className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden cursor-pointer"
                 onClick={() => { setLightboxIndex(2); setLightboxOpen(true) }}
               >
-                <img src="/enero23.jpg" alt="Enero 2023" className="w-full h-full object-cover" />
+                <img src="/IMG_6866.HEIC" alt="IMG 6866" className="w-full h-full object-cover" />
               </div>
-              <div className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden" />
               <div
                 className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden cursor-pointer"
                 onClick={() => { setLightboxIndex(3); setLightboxOpen(true) }}
+              >
+                <img src="/enero23.jpg" alt="Enero 2023" className="w-full h-full object-cover" />
+              </div>
+              <div
+                className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden cursor-pointer"
+                onClick={() => { setLightboxIndex(4); setLightboxOpen(true) }}
+              >
+                <img src="/IMG-20231006-WA0043_Original.jpg" alt="Octubre 2023" className="w-full h-full object-cover" />
+              </div>
+              <div
+                className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden cursor-pointer"
+                onClick={() => { setLightboxIndex(5); setLightboxOpen(true) }}
               >
                 <img src="/IMG_6790.jpeg" alt="Marzo 2026" className="w-full h-full object-cover" />
               </div>
