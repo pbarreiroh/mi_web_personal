@@ -5,7 +5,7 @@ import React from 'react'
 type Language = 'en' | 'es'
 
 const translations = {
-  en: {
+  es: {
     'nav.welcome': 'Bienvenido a mi web',
     'nav.tools': 'Herramientas',
     'nav.projects': 'Proyectos',
@@ -26,8 +26,8 @@ const translations = {
     'linkedin.readmore': 'Leer publicación completa →',
     'linkedin.bio': 'Estudiante de Ingeniería Informática',
     'linkedin.post': 'Hace dos semanas tuve la oportunidad de participar en mi primer hackathon en HackUDC, una experiencia intensa de 36 horas construyendo una solución de inteligencia artificial desde cero.',
-    'tools.soon': 'In development',
-    'tools.wip.desc': 'An AI-powered productivity and wellbeing ecosystem.',
+    'tools.soon': 'Próximamente',
+    'tools.wip.desc': 'Un ecosistema de productividad y bienestar impulsado por IA.',
     'tools.wip.badge': 'wip',
     'project.indifit.desc': 'Herramienta de IA empezada durante el HackUDC26 que no llegó a terminarse',
     'project.terminal.name': 'Terminal Personal',
@@ -36,7 +36,7 @@ const translations = {
     'project.linux.desc': 'Script para personalizar la terminal de Linux',
     'footer.copy': 'pablo barreiro',
   },
-  es: {
+  en: {
     'nav.welcome': 'Welcome to my site',
     'nav.tools': 'Tools',
     'nav.projects': 'Projects',
@@ -57,8 +57,8 @@ const translations = {
     'linkedin.readmore': 'Read full post →',
     'linkedin.bio': 'Computer Engineering student',
     'linkedin.post': 'Two weeks ago I had the opportunity to participate in my first hackathon at HackUDC, an intense 36-hour experience building an artificial intelligence solution from scratch.',
-    'tools.soon': 'Coming soon',
-    'tools.wip.desc': 'Tool under development.',
+    'tools.soon': 'In development',
+    'tools.wip.desc': 'An AI-powered productivity and wellbeing ecosystem.',
     'tools.wip.badge': 'wip',
     'project.indifit.desc': 'AI tool started during HackUDC26 that was not finished',
     'project.terminal.name': 'Personal Terminal',

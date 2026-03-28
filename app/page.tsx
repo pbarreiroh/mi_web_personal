@@ -158,35 +158,22 @@ export default function Home() {
   const { t } = useLanguage();
 
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
     window.scrollTo(0, 0);
+    const timeout = setTimeout(() => window.scrollTo(0, 0), 100);
+    return () => clearTimeout(timeout);
   }, []);
 
   const galleryImages = [
     { src: '/IMG-20220816-WA0010_Original.jpg', alt: 'Agosto 2022' },
     { src: '/IMG_2662.jpeg', alt: 'Junio 2025' },
-    { src: '/IMG_6866.HEIC', alt: 'IMG 6866' },
+    { src: '/IMG_6866.jpg', alt: 'Octubre 2023' },
     { src: '/enero23.jpg', alt: 'Enero 2023' },
     { src: '/IMG-20231006-WA0043_Original.jpg', alt: 'Octubre 2023' },
     { src: '/IMG_6790.jpeg', alt: 'Marzo 2026' },
   ]
-
-  const projects = [
-    {
-      name: 'INDIFIT AI',
-      description: t('project.indifit.desc'),
-      tags: ['FAISS', 'SMA', 'CLIP', 'Python'],
-    },
-    {
-      name: t('project.linux.name'),
-      description: t('project.linux.desc'),
-      tags: ['Bash', 'Zsh', 'Oh My Zsh'],
-    },
-    {
-      name: t('project.terminal.name'),
-      description: t('project.terminal.desc'),
-      tags: ['TypeScript', 'Next.js', 'Tailwind'],
-    },
-  ];
 
   const phrases = [t('hero.phrase.0'), t('hero.phrase.1'), t('hero.phrase.2'), t('hero.phrase.3')];
   const [phraseIndex, setPhraseIndex] = useState(0);
@@ -226,8 +213,7 @@ export default function Home() {
           <div className="hidden md:block absolute left-1/2 -translate-x-1/2 font-serif italic text-white text-sm tracking-wide pointer-events-none select-none">
             {t('nav.welcome')}
           </div>
-          <div className="flex gap-6 text-[10px] uppercase tracking-wider text-white/50">
-            <a href="#herramientas" className="hoverable hover:text-white transition-colors">{t('nav.tools')}</a>
+          <div className="flex gap-6 text-[10px] uppercase tracking-wider text-white">
             <a href="#proyectos" className="hoverable hover:text-white transition-colors">{t('nav.projects')}</a>
             <a href="#galeria" className="hoverable hover:text-white transition-colors">{t('nav.gallery')}</a>
             <button onClick={() => setContactOpen(true)} className="hoverable hover:text-white transition-colors text-[10px] uppercase tracking-wider">{t('nav.contact')}</button>
@@ -257,34 +243,34 @@ export default function Home() {
           <ScrollReveal delay={150}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-12 max-w-3xl">
               <a href="mailto:pbarreirocor@gmail.com" className="hoverable p-4 border border-[rgba(255,255,255,0.07)] rounded-lg bg-white/[0.01] hover:bg-white/[0.03] transition-colors flex flex-col gap-2 relative overflow-hidden group">
-                <svg className="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <div>
-                  <div className="font-sans text-xs text-white/90 font-medium">Email</div>
+                  <div className="font-sans text-xs text-white font-medium">Email</div>
                   <div className="font-sans text-[10px] text-white/45 mt-1 truncate">pbarreirocor@gmail.com</div>
                 </div>
               </a>
 
               <a href="https://instagram.com/pabloo.barreiro_" target="_blank" rel="noopener noreferrer" className="hoverable p-4 border border-[rgba(255,255,255,0.07)] rounded-lg bg-white/[0.01] hover:bg-white/[0.03] transition-colors flex flex-col gap-2 relative overflow-hidden group">
-                <svg className="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" strokeWidth={1.5}></rect>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" strokeWidth={1.5} strokeLinecap="round"></line>
                 </svg>
                 <div>
-                  <div className="font-sans text-xs text-white/90 font-medium">Instagram</div>
+                  <div className="font-sans text-xs text-white font-medium">Instagram</div>
                   <div className="font-sans text-[10px] text-white/45 mt-1 truncate">@pabloo.barreiro_</div>
                 </div>
               </a>
 
               <a href="https://www.linkedin.com/in/pablo-barreiro-cores-93199a2b5/" target="_blank" rel="noopener noreferrer" className="hoverable p-4 border border-[rgba(255,255,255,0.07)] rounded-lg bg-white/[0.01] hover:bg-white/[0.03] transition-colors flex flex-col gap-2 relative overflow-hidden group">
-                <svg className="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
                   <circle cx="4" cy="4" r="2" stroke="none" fill="currentColor"></circle>
                 </svg>
                 <div>
-                  <div className="font-sans text-xs text-white/90 font-medium">LinkedIn</div>
+                  <div className="font-sans text-xs text-white font-medium">LinkedIn</div>
                   <div className="font-sans text-[10px] text-white/45 mt-1 truncate">linkedin.com/in/pablo...</div>
                 </div>
               </a>
@@ -293,9 +279,6 @@ export default function Home() {
 
           <ScrollReveal delay={300}>
             <div className="flex flex-col sm:flex-row gap-3 mt-8">
-              <a href="#herramientas" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
-                {t('hero.btn.tools')}
-              </a>
               <a href="#proyectos" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
                 {t('hero.btn.projects')}
               </a>
@@ -341,6 +324,49 @@ export default function Home() {
           </section>
         </ScrollReveal>
 
+        {/* Proyectos */}
+        <ScrollReveal>
+          <section id="proyectos" className="space-y-6">
+            <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45">
+              {t('section.projects')}
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              {/* Card 1 — pbfocus */}
+              <div className="p-7 border border-white rounded-xl bg-white/[0.02] flex flex-col gap-4 min-h-[250px]">
+                <p className="text-white text-sm leading-relaxed">
+                  Si necesitas ayuda para organizar tu día y gestionar tu tiempo, te presento pbfocus
+                  <br />
+                  Un ecosistema de productividad y bienestar impulsado por IA.
+                </p>
+                <div className="mt-auto">
+                  <a
+                    href="https://pbfocus.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hoverable block mx-auto w-3/4 bg-white text-black font-medium py-4 rounded-xl text-sm text-center hover:bg-white/90 transition-colors"
+                  >
+                    ¡Pruebalo ahora!
+                  </a>
+                </div>
+              </div>
+
+              {/* Card 2 — En desarrollo */}
+              <div className="p-7 border border-white rounded-xl bg-white/[0.02] flex flex-col gap-4 min-h-[200px]">
+                <div className="text-white text-xl font-medium flex items-center gap-0.5" style={{ textShadow: '0 0 12px rgba(255,255,255,0.8)' }}>
+                  En desarrollo<AnimatedDots />
+                </div>
+                <div className="mt-auto">
+                  <div className="mx-auto w-3/4 border border-white/40 text-white/60 font-medium py-4 rounded-xl text-sm text-center">
+                    Disponible el día 1 de Julio
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+        </ScrollReveal>
+
         {/* Galería */}
         <ScrollReveal id="galeria">
           <section className="space-y-6">
@@ -364,7 +390,7 @@ export default function Home() {
                 className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden cursor-pointer"
                 onClick={() => { setLightboxIndex(2); setLightboxOpen(true) }}
               >
-                <img src="/IMG_6866.HEIC" alt="IMG 6866" className="w-full h-full object-cover" />
+                <img src="/IMG_6866.jpg" alt="Abril 2026" className="w-full h-full object-cover" />
               </div>
               <div
                 className="hoverable aspect-square bg-[#111] rounded-md border border-white/5 overflow-hidden cursor-pointer"
@@ -388,72 +414,6 @@ export default function Home() {
           </section>
         </ScrollReveal>
 
-        {/* Herramientas */}
-        <ScrollReveal>
-          <section id="herramientas" className="space-y-6">
-            <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45">
-              {t('section.tools')}
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-              {/* Card 1 — pbfocus */}
-              <div className="p-7 border border-white rounded-xl bg-white/[0.02] flex flex-col gap-4 min-h-[200px]">
-                <p className="text-white/50 text-xs leading-relaxed">
-                  Un ecosistema de productividad y bienestar impulsado por IA.
-                </p>
-                <div className="mt-auto">
-                  <a
-                    href="https://pbfocus.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hoverable block w-full bg-white text-black font-medium py-3 rounded-lg text-sm text-center hover:bg-white/90 transition-colors"
-                  >
-                    Visitar pbfocus
-                  </a>
-                </div>
-              </div>
-
-              {/* Card 2 — En desarrollo */}
-              <div className="p-7 border border-white rounded-xl bg-white/[0.02] flex flex-col gap-4 min-h-[200px]">
-                <div className="text-white/70 text-sm font-medium flex items-center gap-0.5">
-                  En desarrollo<AnimatedDots />
-                </div>
-                <div className="mt-auto">
-                  <div className="w-full border border-white/40 text-white/60 font-medium py-3 rounded-lg text-sm text-center">
-                    Disponible el día 1 de Julio
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </section>
-        </ScrollReveal>
-
-        {/* Proyectos */}
-        <ScrollReveal id="proyectos">
-          <section className="space-y-6">
-            <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45">
-              {t('section.projects')}
-            </div>
-            <div className="flex flex-col border-t border-white/5">
-              {projects.map((project, idx) => (
-                <div key={idx} className="group flex flex-col sm:flex-row sm:items-center justify-between py-6 border-b border-white/5 hover:bg-white/[0.02] transition-colors hoverable px-2 -mx-2">
-                  <div className="space-y-1 sm:w-2/3 group-hover:translate-x-2 transition-transform duration-300">
-                    <h3 className="text-white/85 text-base md:text-lg font-medium">{project.name}</h3>
-                    <p className="text-white/25 text-xs tracking-wide">{project.description}</p>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-3 sm:mt-0">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="px-2 py-1 border border-white/10 text-white/30 text-[9px] font-mono rounded-full uppercase tracking-wider">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </ScrollReveal>
 
       </main>
 
