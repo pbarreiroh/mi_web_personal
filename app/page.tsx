@@ -201,6 +201,10 @@ export default function Home() {
           50% { top: 0%; height: 100%; }
           100% { top: 100%; height: 100%; }
         }
+        @keyframes shimmer {
+          0% { background-position: 200% center; }
+          100% { background-position: -200% center; }
+        }
       `}</style>
       <VisitTracker />
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -278,12 +282,14 @@ export default function Home() {
           </ScrollReveal>
 
           <ScrollReveal delay={300}>
-            <div className="flex flex-col sm:flex-row gap-3 mt-8">
-              <a href="#proyectos" className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
-                {t('hero.btn.projects')}
+            <div className="flex flex-row gap-4 mt-8 justify-center w-full">
+              <a href="#proyectos" className="relative overflow-hidden group bg-white text-[#080808] font-medium px-7 py-4 text-xs tracking-wide rounded-md hover:bg-white/90 transition-all active:scale-95 active:brightness-90 hoverable text-center">
+                <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-black/10 transition-transform duration-500 ease-out group-hover:translate-x-[200%]" aria-hidden="true" />
+                <span className="relative z-10">{t('hero.btn.projects')}</span>
               </a>
-              <button onClick={() => setContactOpen(true)} className="bg-white text-[#080808] font-medium px-5 py-2.5 text-xs tracking-wide rounded-md hover:bg-white/90 transition-colors hoverable text-center">
-                {t('hero.btn.contact')}
+              <button onClick={() => setContactOpen(true)} className="relative overflow-hidden group bg-white text-[#080808] font-medium px-7 py-4 text-xs tracking-wide rounded-md hover:bg-white/90 transition-all active:scale-95 active:brightness-90 hoverable text-center">
+                <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-black/10 transition-transform duration-500 ease-out group-hover:translate-x-[200%]" aria-hidden="true" />
+                <span className="relative z-10">{t('hero.btn.contact')}</span>
               </button>
             </div>
           </ScrollReveal>
@@ -333,8 +339,8 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
               {/* Card 1 — pbfocus */}
-              <div className="p-7 border border-white rounded-xl bg-white/[0.02] flex flex-col gap-4 min-h-[250px]">
-                <p className="text-white text-sm leading-relaxed">
+              <div className="p-7 border border-white rounded-xl bg-white/[0.02] flex flex-col gap-4 min-h-[270px]">
+                <p className="text-white text-base leading-relaxed">
                   Si necesitas ayuda para organizar tu día y gestionar tu tiempo, te presento pbfocus
                   <br />
                   Un ecosistema de productividad y bienestar impulsado por IA.
@@ -344,7 +350,7 @@ export default function Home() {
                     href="https://pbfocus.vercel.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hoverable block mx-auto w-3/4 bg-white text-black font-medium py-4 rounded-xl text-sm text-center hover:bg-white/90 transition-colors"
+                    className="hoverable block mx-auto w-3/4 bg-white text-black font-medium py-2 rounded-xl text-base text-center hover:bg-white/90 transition-colors"
                   >
                     ¡Pruebalo ahora!
                   </a>
@@ -353,8 +359,20 @@ export default function Home() {
 
               {/* Card 2 — En desarrollo */}
               <div className="p-7 border border-white rounded-xl bg-white/[0.02] flex flex-col gap-4 min-h-[200px]">
-                <div className="text-white text-xl font-medium flex items-center gap-0.5" style={{ textShadow: '0 0 12px rgba(255,255,255,0.8)' }}>
-                  En desarrollo<AnimatedDots />
+                <div className="flex flex-col items-center justify-center flex-1">
+                  <div 
+                    className="text-white text-xl font-medium italic flex items-center gap-0.5" 
+                    style={{
+                      background: 'linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,1) 40%, rgba(255,255,255,0.4) 100%)',
+                      backgroundSize: '200% auto',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      animation: 'shimmer 3s linear infinite',
+                    }}
+                  >
+                    En desarrollo<AnimatedDots />
+                  </div>
                 </div>
                 <div className="mt-auto">
                   <div className="mx-auto w-3/4 border border-white/40 text-white/60 font-medium py-4 rounded-xl text-sm text-center">
