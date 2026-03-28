@@ -31,6 +31,11 @@ const translations = {
     'project.terminal.desc': 'Emulador de terminal en el navegador web con comandos reales ejecutables y sistema de archivos.',
     'project.linux.name': 'Personalizacion de Terminal en Linux',
     'project.linux.desc': 'Script para personalizar la terminal de Linux',
+    'project.pbfocus.desc1': 'Si necesitas ayuda para organizar tu día y gestionar tu tiempo, te presento pbfocus',
+    'project.pbfocus.desc2': 'Un ecosistema de productividad y bienestar impulsado por IA.',
+    'project.pbfocus.btn': '¡Pruébalo ahora!',
+    'project.wip.title': 'En desarrollo',
+    'project.wip.btn': 'Disponible el día 1 de Julio',
     'footer.copy': 'pablo barreiro',
   },
   en: {
@@ -59,6 +64,11 @@ const translations = {
     'project.terminal.desc': 'Browser-based terminal emulator with real executable commands and a file system.',
     'project.linux.name': 'Linux Terminal Customization',
     'project.linux.desc': 'Script to customize the Linux terminal.',
+    'project.pbfocus.desc1': 'If you need help organizing your day and managing your time, let me introduce pbfocus',
+    'project.pbfocus.desc2': 'An AI-powered productivity and wellbeing ecosystem.',
+    'project.pbfocus.btn': 'Try it now!',
+    'project.wip.title': 'In development',
+    'project.wip.btn': 'Available July 1st',
     'footer.copy': 'pablo barreiro',
   },
 }

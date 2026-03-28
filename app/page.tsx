@@ -282,7 +282,7 @@ export default function Home() {
           </ScrollReveal>
 
           <ScrollReveal delay={300}>
-            <div className="flex flex-row justify-center w-full mt-16">
+            <div className="flex flex-row justify-center w-full mt-25">
               <button onClick={() => setContactOpen(true)} className="relative overflow-hidden group bg-white text-[#080808] font-medium px-10 py-4 text-sm tracking-wide rounded-md hover:bg-white/90 transition-all active:scale-95 active:brightness-90 hoverable text-center">
                 <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-black/10 transition-transform duration-500 ease-out group-hover:translate-x-[200%]" aria-hidden="true" />
                 <span className="relative z-10">{t('hero.btn.contact')}</span>
@@ -318,9 +318,9 @@ export default function Home() {
                     animation: 'shimmer 3s linear infinite',
                   }}
                 >
-                  Si necesitas ayuda para organizar tu día y gestionar tu tiempo, te presento pbfocus
+                  {t('project.pbfocus.desc1')}
                   <br />
-                  <span className="font-bold">Un ecosistema de productividad y bienestar impulsado por IA.</span>
+                  <span className="font-bold">{t('project.pbfocus.desc2')}</span>
                 </p>
                 <div className="mt-auto">
                   <a
@@ -329,7 +329,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="hoverable block mx-auto w-3/4 bg-white text-black font-medium py-2 rounded-xl text-base text-center hover:bg-white/90 transition-colors"
                   >
-                    ¡Pruebalo ahora!
+                    {t('project.pbfocus.btn')}
                   </a>
                 </div>
               </div>
@@ -348,12 +348,12 @@ export default function Home() {
                       animation: 'shimmer 3s linear infinite',
                     }}
                   >
-                    En desarrollo<AnimatedDots />
+                    {t('project.wip.title')}<AnimatedDots />
                   </div>
                 </div>
                 <div className="mt-auto">
                   <div className="mx-auto w-3/4 border border-white/40 text-white/60 font-medium py-4 rounded-xl text-sm text-center">
-                    Disponible el día 1 de Julio
+                    {t('project.wip.btn')}
                   </div>
                 </div>
               </div>
