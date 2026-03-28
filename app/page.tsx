@@ -268,7 +268,7 @@ export default function Home() {
                 </div>
               </a>
 
-              <a href="https://www.linkedin.com/in/pablo-barreiro-cores-93199a2b5/" target="_blank" rel="noopener noreferrer" className="hoverable p-4 border border-[rgba(255,255,255,0.07)] rounded-lg bg-white/[0.01] hover:bg-white/[0.03] transition-colors flex flex-col gap-2 relative overflow-hidden group">
+              <a href="https://www.linkedin.com/posts/pablo-barreiro-cores-93199a2b5_hace-dos-semanas-tuve-la-oportunidad-de-participar-activity-7438267951851626496-IS8G?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEvJXbUBo-opj8ZNh35LQf3_uH5MQJFXcUc" target="_blank" rel="noopener noreferrer" className="hoverable p-4 border border-[rgba(255,255,255,0.07)] rounded-lg bg-white/[0.01] hover:bg-white/[0.03] transition-colors flex flex-col gap-2 relative overflow-hidden group">
                 <svg className="w-4 h-4 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
                   <circle cx="4" cy="4" r="2" stroke="none" fill="currentColor"></circle>
@@ -282,12 +282,8 @@ export default function Home() {
           </ScrollReveal>
 
           <ScrollReveal delay={300}>
-            <div className="flex flex-row gap-4 mt-8 justify-center w-full">
-              <a href="#proyectos" className="relative overflow-hidden group bg-white text-[#080808] font-medium px-7 py-4 text-xs tracking-wide rounded-md hover:bg-white/90 transition-all active:scale-95 active:brightness-90 hoverable text-center">
-                <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-black/10 transition-transform duration-500 ease-out group-hover:translate-x-[200%]" aria-hidden="true" />
-                <span className="relative z-10">{t('hero.btn.projects')}</span>
-              </a>
-              <button onClick={() => setContactOpen(true)} className="relative overflow-hidden group bg-white text-[#080808] font-medium px-7 py-4 text-xs tracking-wide rounded-md hover:bg-white/90 transition-all active:scale-95 active:brightness-90 hoverable text-center">
+            <div className="flex flex-row justify-center w-full mt-10">
+              <button onClick={() => setContactOpen(true)} className="relative overflow-hidden group bg-white text-[#080808] font-medium px-10 py-4 text-sm tracking-wide rounded-md hover:bg-white/90 transition-all active:scale-95 active:brightness-90 hoverable text-center">
                 <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-black/10 transition-transform duration-500 ease-out group-hover:translate-x-[200%]" aria-hidden="true" />
                 <span className="relative z-10">{t('hero.btn.contact')}</span>
               </button>
@@ -299,36 +295,7 @@ export default function Home() {
       {/* Otras secciones */}
       <main className="max-w-4xl mx-auto px-8 md:px-16 py-20 space-y-32">
 
-        {/* Últimamente */}
-        <ScrollReveal>
-          <section className="space-y-6">
-            <div className="font-mono uppercase text-xs md:text-sm tracking-widest text-white/45 mb-6">
-              {t('section.lately')}
-            </div>
-            <div className="relative p-6 border border-white/[0.08] rounded-xl bg-[#0d0d0d]" style={{ maxHeight: '220px', overflow: 'hidden' }}>
-              <div className="flex items-center gap-3 mb-5 shrink-0">
-                <img src="/HACK UDC-128.jpg" className="w-10 h-10 rounded-full object-cover" alt="Pablo Barreiro" />
-                <div>
-                  <div className="text-sm text-white/90">Pablo Barreiro</div>
-                  <div className="text-[11px] text-white/40">{t('linkedin.bio')}</div>
-                </div>
-                <div className="ml-auto text-white/20">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="border-l border-white/[0.06] pl-4 text-sm text-white/60 leading-relaxed">
-                <p>{t('linkedin.post')}</p>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 h-20 flex items-end justify-center pb-4" style={{ background: 'linear-gradient(to top, #0d0d0d 40%, transparent)' }}>
-                <a href="https://www.linkedin.com/posts/pablo-barreiro-cores-93199a2b5_hace-dos-semanas-tuve-la-oportunidad-de-participar-activity-7438267951851626496-IS8G?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEvJXbUBo-opj8ZNh35LQf3_uH5MQJFXcUc" target="_blank" rel="noopener noreferrer" className="hoverable px-4 py-1.5 bg-[#1a1a1a] hover:bg-[#222] border border-white/[0.08] text-white/70 hover:text-white transition-colors text-[10px] font-mono rounded-full">
-                  {t('linkedin.readmore')}
-                </a>
-              </div>
-            </div>
-          </section>
-        </ScrollReveal>
+
 
         {/* Proyectos */}
         <ScrollReveal>
@@ -340,10 +307,20 @@ export default function Home() {
 
               {/* Card 1 — pbfocus */}
               <div className="p-7 border border-white rounded-xl bg-white/[0.02] flex flex-col gap-4 min-h-[270px]">
-                <p className="text-white text-base leading-relaxed">
+                <p 
+                  className="text-white/55 text-base italic leading-loose"
+                  style={{
+                    background: 'linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.4) 100%)',
+                    backgroundSize: '200% auto',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    animation: 'shimmer 3s linear infinite',
+                  }}
+                >
                   Si necesitas ayuda para organizar tu día y gestionar tu tiempo, te presento pbfocus
                   <br />
-                  Un ecosistema de productividad y bienestar impulsado por IA.
+                  <span className="font-bold">Un ecosistema de productividad y bienestar impulsado por IA.</span>
                 </p>
                 <div className="mt-auto">
                   <a
