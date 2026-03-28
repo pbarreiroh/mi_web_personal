@@ -16,16 +16,13 @@ const translations = {
     'hero.phrase.2': 'Ciberseguridad',
     'hero.phrase.3': 'Desarrollo',
     'hero.bio': 'Me llamo Pablo, soy estudiante de primero de Ingeniería Informática. Esta web nace con la idea de mostrar un poco más de mí y de compartir proyectos, certificados y aprendizajes que vaya adquiriendo a lo largo de la carrera. Mi enfoque se basa en solucionar problemas reales, por eso tengo en desarrollo dos herramientas de IA que pueden ser útiles en tu día a día. ¡Échales un vistazo!',
-    'hero.btn.tools': 'Explorar herramientas',
-    'hero.btn.projects': 'Ver proyectos',
+
     'hero.btn.contact': 'Contáctame',
-    'section.lately': 'Últimamente',
+
     'section.gallery': 'Galería',
     'section.tools': 'Herramientas',
     'section.projects': 'Proyectos',
-    'linkedin.readmore': 'Leer publicación completa →',
-    'linkedin.bio': 'Estudiante de Ingeniería Informática',
-    'linkedin.post': 'Hace dos semanas tuve la oportunidad de participar en mi primer hackathon en HackUDC, una experiencia intensa de 36 horas construyendo una solución de inteligencia artificial desde cero.',
+
     'tools.soon': 'Próximamente',
     'tools.wip.desc': 'Un ecosistema de productividad y bienestar impulsado por IA.',
     'tools.wip.badge': 'wip',
@@ -47,18 +44,15 @@ const translations = {
     'hero.phrase.2': 'Cybersecurity',
     'hero.phrase.3': 'Development',
     'hero.bio': 'My name is Pablo, I am a first-year Computer Engineering student. This site was born with the idea of showing a bit more about myself and sharing projects, certificates, and learnings I acquire throughout my degree. My focus is on solving real problems, which is why I have two AI tools in development that can be useful in your day-to-day. Check them out!',
-    'hero.btn.tools': 'Explore tools',
-    'hero.btn.projects': 'View projects',
+
     'hero.btn.contact': 'Contact me',
-    'section.lately': 'Lately',
+
     'section.gallery': 'Gallery',
     'section.tools': 'Tools',
     'section.projects': 'Projects',
-    'linkedin.readmore': 'Read full post →',
-    'linkedin.bio': 'Computer Engineering student',
-    'linkedin.post': 'Two weeks ago I had the opportunity to participate in my first hackathon at HackUDC, an intense 36-hour experience building an artificial intelligence solution from scratch.',
-    'tools.soon': 'In development',
-    'tools.wip.desc': 'An AI-powered productivity and wellbeing ecosystem.',
+
+    'tools.soon': 'Coming July 1st',
+    'tools.wip.desc': 'If you need help organizing your day and managing your time, let me introduce pbfocus — an AI-powered productivity and wellbeing ecosystem.',
     'tools.wip.badge': 'wip',
     'project.indifit.desc': 'AI tool started during HackUDC26 that was not finished',
     'project.terminal.name': 'Personal Terminal',
