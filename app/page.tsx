@@ -282,7 +282,7 @@ export default function Home() {
           </ScrollReveal>
 
           <ScrollReveal delay={300}>
-            <div className="flex flex-row justify-center w-full mt-10">
+            <div className="flex flex-row justify-center w-full mt-16">
               <button onClick={() => setContactOpen(true)} className="relative overflow-hidden group bg-white text-[#080808] font-medium px-10 py-4 text-sm tracking-wide rounded-md hover:bg-white/90 transition-all active:scale-95 active:brightness-90 hoverable text-center">
                 <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-black/10 transition-transform duration-500 ease-out group-hover:translate-x-[200%]" aria-hidden="true" />
                 <span className="relative z-10">{t('hero.btn.contact')}</span>
@@ -307,7 +307,7 @@ export default function Home() {
 
               {/* Card 1 — pbfocus */}
               <div className="p-7 border border-white rounded-xl bg-white/[0.02] flex flex-col gap-4 min-h-[270px]">
-                <p 
+                <p
                   className="text-white/55 text-base italic leading-loose"
                   style={{
                     background: 'linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.4) 100%)',
@@ -337,8 +337,8 @@ export default function Home() {
               {/* Card 2 — En desarrollo */}
               <div className="p-7 border border-white rounded-xl bg-white/[0.02] flex flex-col gap-4 min-h-[200px]">
                 <div className="flex flex-col items-center justify-center flex-1">
-                  <div 
-                    className="text-white text-xl font-medium italic flex items-center gap-0.5" 
+                  <div
+                    className="text-white text-xl font-medium italic flex items-center gap-0.5"
                     style={{
                       background: 'linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,1) 40%, rgba(255,255,255,0.4) 100%)',
                       backgroundSize: '200% auto',
